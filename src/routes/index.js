@@ -2,6 +2,7 @@ import config from '~/config';
 
 // Layouts
 import { HeaderOnly } from '~/layouts';
+
 import Following from '~/pages/Following';
 import Home from '~/pages/Home';
 import Profile from '~/pages/Profile';
@@ -20,16 +21,16 @@ const publicRoutes = [
         component: Following,
     },
     {
-        path: config.routes.home,
+        path: config.routes.profile,
         component: Profile,
     },
     {
-        path: config.routes.home,
+        path: config.routes.search,
         component: Search,
         layout: null,
     },
     {
-        path: config.routes.home,
+        path: config.routes.upload,
         component: Upload,
         layout: HeaderOnly,
     },
