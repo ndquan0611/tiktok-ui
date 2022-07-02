@@ -1,9 +1,23 @@
 import classNames from 'classnames/bind';
 import { Link } from 'react-router-dom';
-import Tippy from '@tippyjs/react/headless';
-import 'tippy.js/dist/tippy.css';
 
-import { KeyboardIcon, LanguageIcon, MenuIcon, PlusIcon, QuestionIcon } from '~/components/Icons';
+import Tippy from '@tippyjs/react';
+import 'tippy.js/dist/tippy.css'; // optional
+
+import {
+    CoinIcon,
+    InboxIcon,
+    KeyboardIcon,
+    LanguageIcon,
+    LogoutIcon,
+    MenuIcon,
+    MessageIcon,
+    PlusIcon,
+    QuestionIcon,
+    SettingIcon,
+    UploadIcon,
+    UserIcon,
+} from '~/components/Icons';
 import images from '~/assets/images';
 import config from '~/config';
 import Search from '~/layouts/Components/Search';
@@ -45,6 +59,8 @@ const MENU_ITEMS = [
 ];
 
 function Header() {
+    const currentUser = true;
+
     // Handle logic
     const handleMenuChange = (menuItem) => {
         switch (menuItem.type) {
@@ -53,6 +69,31 @@ function Header() {
             default:
         }
     };
+
+    const userMenu = [
+        {
+            icon: <UserIcon />,
+            title: 'View profile',
+            to: '/@hoa',
+        },
+        {
+            icon: <CoinIcon />,
+            title: 'Get coins',
+            to: '/coin',
+        },
+        {
+            icon: <SettingIcon />,
+            title: 'Settings',
+            to: '/setting',
+        },
+        ...MENU_ITEMS,
+        {
+            icon: <LogoutIcon />,
+            title: 'Log out',
+            to: '/logout',
+            separate: true,
+        },
+    ];
 
     return (
         <header className={cx('wrapper')}>
@@ -64,15 +105,45 @@ function Header() {
                 <Search />
 
                 <div className={cx('action')}>
-                    <Button text leftIcon={<PlusIcon />} className={cx('action-upload')}>
-                        Upload
-                    </Button>
-                    <Button primary>Log in</Button>
-
-                    <Menu items={MENU_ITEMS} onChange={handleMenuChange}>
-                        <button className={cx('more-btn')}>
-                            <MenuIcon />
-                        </button>
+                    {currentUser ? (
+                        <>
+                            <Tippy delay={[0, 200]} content="Upload video" placement="bottom">
+                                <button className={cx('action-btn')}>
+                                    <UploadIcon />
+                                </button>
+                            </Tippy>
+                            <Tippy delay={[0, 200]} content="Message" placement="bottom">
+                                <button className={cx('action-btn')}>
+                                    <MessageIcon />
+                                </button>
+                            </Tippy>
+                            <Tippy delay={[0, 200]} content="Inbox" placement="bottom">
+                                <button className={cx('action-btn')}>
+                                    <InboxIcon />
+                                    <span className={cx('badge')}>12</span>
+                                </button>
+                            </Tippy>
+                        </>
+                    ) : (
+                        <>
+                            <Button text leftIcon={<PlusIcon />} className={cx('action-upload')}>
+                                Upload
+                            </Button>
+                            <Button primary>Log in</Button>
+                        </>
+                    )}
+                    <Menu items={currentUser ? userMenu : MENU_ITEMS} onChange={handleMenuChange}>
+                        {currentUser ? (
+                            <img
+                                className={cx('user-avatar')}
+                                src="https://avatars.githubusercontent.com/u/88429043?s=40&v=4"
+                                alt=""
+                            />
+                        ) : (
+                            <button className={cx('more-btn')}>
+                                <MenuIcon />
+                            </button>
+                        )}
                     </Menu>
                 </div>
             </div>
