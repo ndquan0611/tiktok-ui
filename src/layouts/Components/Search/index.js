@@ -43,7 +43,7 @@ function Search() {
                     <button className={cx('clear')}>
                         <CloseIcon />
                     </button>
-                    {/* <LoadingIcon className={cx('loading')} /> */}
+                    <LoadingIcon className={cx('loading')} />
                     <button className={cx('search-btn')}>
                         <SearchIcon />
                     </button>
