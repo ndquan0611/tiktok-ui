@@ -1,29 +1,42 @@
-import { useEffect, useState } from 'react';
-import classNames from 'classnames/bind';
 import Tippy from '@tippyjs/react/headless';
-import 'tippy.js/dist/tippy.css';
+import classNames from 'classnames/bind';
+import { useEffect, useRef, useState } from 'react';
 
-import { Wrapper as PopperWrapper } from '~/components/Popper';
-import { CloseIcon, LoadingIcon, SearchIcon } from '~/components/Icons';
 import AccountItem from '~/components/AccountItem';
+import { CloseIcon, LoadingIcon, SearchIcon } from '~/components/Icons';
+import { Wrapper as PopperWrapper } from '~/components/Popper';
 import styles from './Search.module.scss';
 
 const cx = classNames.bind(styles);
 
 function Search() {
+    const [searchValue, setSearchValue] = useState('');
     const [searchResult, setSearchResult] = useState([]);
+    const [showResult, setShowResult] = useState(true);
+
+    const inputRef = useRef();
 
     useEffect(() => {
         setTimeout(() => {
-            setSearchResult([]);
+            setSearchResult([1, 2]);
         }, 0);
     }, []);
+
+    const handleClear = () => {
+        setSearchValue('');
+        setSearchResult([]);
+        inputRef.current.focus();
+    };
+
+    const handleHideResult = () => {
+        setShowResult(false);
+    };
 
     return (
         <div>
             <Tippy
                 interactive
-                visible={searchResult.length > 0}
+                visible={showResult && searchResult.length > 0}
                 render={(attrs) => (
                     <div className={cx('search-result')} tabIndex="-1" {...attrs}>
                         <PopperWrapper>
@@ -37,13 +50,24 @@ function Search() {
                         </PopperWrapper>
                     </div>
                 )}
+                onClickOutside={handleHideResult}
             >
                 <div className={cx('search')}>
-                    <input placeholder="Search accounts and videos" spellCheck={false} />
-                    <button className={cx('clear')}>
-                        <CloseIcon />
-                    </button>
-                    <LoadingIcon className={cx('loading')} />
+                    <input
+                        ref={inputRef}
+                        value={searchValue}
+                        placeholder="Search accounts and videos"
+                        spellCheck={false}
+                        onChange={(e) => setSearchValue(e.target.value)}
+                        onFocus={() => setShowResult(true)}
+                    />
+                    {!!searchValue && (
+                        <button className={cx('clear')} onClick={handleClear}>
+                            <CloseIcon />
+                        </button>
+                    )}
+
+                    {/* <LoadingIcon className={cx('loading')} /> */}
                     <button className={cx('search-btn')}>
                         <SearchIcon />
                     </button>
