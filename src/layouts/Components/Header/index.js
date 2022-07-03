@@ -24,6 +24,7 @@ import Search from '~/layouts/Components/Search';
 import Button from '~/components/Button';
 import styles from './Header.module.scss';
 import Menu from '~/components/Popper/Menu';
+import Image from '~/components/Image';
 
 const cx = classNames.bind(styles);
 
@@ -134,10 +135,11 @@ function Header() {
                     )}
                     <Menu items={currentUser ? userMenu : MENU_ITEMS} onChange={handleMenuChange}>
                         {currentUser ? (
-                            <img
+                            <Image
                                 className={cx('user-avatar')}
                                 src="https://avatars.githubusercontent.com/u/88429043?s=40&v=4"
-                                alt=""
+                                alt="avatar"
+                                fallback="https://static.fullstack.edu.vn/static/media/fallback-avatar.155cdb2376c5d99ea151.jpg"
                             />
                         ) : (
                             <button className={cx('more-btn')}>
