@@ -1,8 +1,8 @@
 import classNames from 'classnames/bind';
+import PropTypes from 'prop-types';
 import { Link } from 'react-router-dom';
 import { CheckIcon } from '~/components/Icons';
 import Image from '~/components/Image';
-import config from '~/config';
 import styles from './AccountItem.module.scss';
 
 const cx = classNames.bind(styles);
@@ -21,5 +21,9 @@ function AccountItem({ data }) {
         </Link>
     );
 }
+
+AccountItem.propTypes = {
+    data: PropTypes.object,
+};
 
 export default AccountItem;

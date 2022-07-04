@@ -49,7 +49,7 @@ function Search() {
         setShowResult(false);
     };
 
-    const hanleChange = (e) => {
+    const handleChange = (e) => {
         const searchValue = e.target.value;
         if (searchValue.startsWith(' ')) {
             return;
@@ -82,7 +82,7 @@ function Search() {
                         value={searchValue}
                         placeholder="Search accounts and videos"
                         spellCheck={false}
-                        onChange={hanleChange}
+                        onChange={handleChange}
                         onFocus={() => setShowResult(true)}
                     />
                     {!!searchValue && !loading && (
