@@ -2,10 +2,11 @@ import Tippy from '@tippyjs/react/headless';
 import classNames from 'classnames/bind';
 import { useEffect, useRef, useState } from 'react';
 
-import AccountItem from '~/components/AccountItem';
+import * as searchService from '~/services/searchService';
+import { useDebounce } from '~/hooks';
 import { CloseIcon, LoadingIcon, SearchIcon } from '~/components/Icons';
 import { Wrapper as PopperWrapper } from '~/components/Popper';
-import { useDebounce } from '~/hooks';
+import AccountItem from '~/components/AccountItem';
 import styles from './Search.module.scss';
 
 const cx = classNames.bind(styles);
@@ -26,21 +27,16 @@ function Search() {
             return;
         }
 
-        setLoading(true);
+        const fetchApi = async () => {
+            setLoading(true);
 
-        fetch(
-            `https://tiktok.fullstack.edu.vn/api/users/search?q=${encodeURIComponent(
-                debounced,
-            )}&type=less`,
-        )
-            .then((res) => res.json())
-            .then((res) => {
-                setSearchResult(res.data);
-                setLoading(false);
-            })
-            .catch(() => {
-                setLoading(false);
-            });
+            const result = await searchService.search(debounced);
+            setSearchResult(result);
+
+            setLoading(false);
+        };
+
+        fetchApi();
     }, [debounced]);
 
     const handleClear = () => {
@@ -51,6 +47,15 @@ function Search() {
 
     const handleHideResult = () => {
         setShowResult(false);
+    };
+
+    const hanleChange = (e) => {
+        const searchValue = e.target.value;
+        if (searchValue.startsWith(' ')) {
+            return;
+        } else {
+            setSearchValue(searchValue);
+        }
     };
 
     return (
@@ -76,7 +81,7 @@ function Search() {
                         value={searchValue}
                         placeholder="Search accounts and videos"
                         spellCheck={false}
-                        onChange={(e) => setSearchValue(e.target.value)}
+                        onChange={hanleChange}
                         onFocus={() => setShowResult(true)}
                     />
                     {!!searchValue && !loading && (
