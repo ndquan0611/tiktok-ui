@@ -1,15 +1,15 @@
+// config
 import config from '~/config';
 
-// Layouts
+// layouts
 import { HeaderOnly } from '~/layouts';
 
+// pages
 import Following from '~/pages/Following';
 import Home from '~/pages/Home';
 import Profile from '~/pages/Profile';
 import Search from '~/pages/Search';
 import Upload from '~/pages/Upload';
-
-// Pages
 
 const publicRoutes = [
     {
