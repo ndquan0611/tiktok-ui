@@ -1,4 +1,5 @@
 import classNames from 'classnames/bind';
+import PropTypes from 'prop-types';
 import { BackIcon } from '~/components/Icons';
 import styles from './Menu.module.scss';
 
@@ -14,5 +15,10 @@ function Header({ title, onBack }) {
         </header>
     );
 }
+
+Header.propTypes = {
+    title: PropTypes.string.isRequired,
+    onBack: PropTypes.func,
+};
 
 export default Header;
