@@ -59,6 +59,7 @@ function Search() {
     };
 
     return (
+        // Using a wrapper <div> or <span> tag around the reference element solves this by creating a new parentNode context.
         <div>
             <Tippy
                 interactive
