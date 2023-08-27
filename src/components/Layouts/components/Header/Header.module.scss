@@ -45,6 +45,7 @@
         caret-color: var(--primary);
         background-color: transparent;
         font-size: 1.6rem;
+        font-family: var(--font-family);
     }
 
     input:not(:placeholder-shown) ~ .search-btn {
