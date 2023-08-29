@@ -1,21 +1,23 @@
 import classNames from 'classnames/bind';
-import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
-import {
-    faCircleQuestion,
-    faEarthAsia,
-    faEllipsisVertical,
-    faKeyboard,
-    faSignOut,
-} from '@fortawesome/free-solid-svg-icons';
-
 import Tippy from '@tippyjs/react';
 import 'tippy.js/dist/tippy.css'; // optional
 
-import Button from '~/components/Button';
 import images from '~/assets/images';
-import Menu from '~/components/Popper/Menu';
-import { InboxIcon, MessageIcon, UploadIcon } from '~/components/Icons';
+import {
+    CoinIcon,
+    EllipsisIcon,
+    InboxIcon,
+    KeyboardIcon,
+    LanguageIcon,
+    LogoutIcon,
+    MessageIcon,
+    QuestionIcon,
+    UploadIcon,
+    UserIcon,
+} from '~/components/Icons';
 import Image from '~/components/Image';
+import Button from '~/components/Button';
+import Menu from '~/components/Popper/Menu';
 import Search from '~/components/Layouts/components/Search';
 import styles from './Header.module.scss';
 
@@ -23,7 +25,7 @@ const cx = classNames.bind(styles);
 
 const MENU_ITEMS = [
     {
-        icon: <FontAwesomeIcon icon={faEarthAsia} />,
+        icon: <LanguageIcon />,
         title: 'English',
         children: {
             title: 'Language',
@@ -42,12 +44,12 @@ const MENU_ITEMS = [
         },
     },
     {
-        icon: <FontAwesomeIcon icon={faCircleQuestion} />,
+        icon: <QuestionIcon />,
         title: 'Feedback and help',
         to: '/feedback',
     },
     {
-        icon: <FontAwesomeIcon icon={faKeyboard} />,
+        icon: <KeyboardIcon />,
         title: 'Keyboard shortcuts',
     },
 ];
@@ -66,23 +68,23 @@ function Header() {
 
     const userMenu = [
         {
-            icon: <FontAwesomeIcon icon={faCircleQuestion} />,
+            icon: <UserIcon />,
             title: 'View profile',
             to: '/@hoaa',
         },
         {
-            icon: <FontAwesomeIcon icon={faCircleQuestion} />,
+            icon: <CoinIcon />,
             title: 'Get coins',
             to: '/coin',
         },
         {
-            icon: <FontAwesomeIcon icon={faCircleQuestion} />,
+            icon: <QuestionIcon />,
             title: 'Settings',
             to: '/settings',
         },
         ...MENU_ITEMS,
         {
-            icon: <FontAwesomeIcon icon={faSignOut} />,
+            icon: <LogoutIcon />,
             title: 'Log out',
             to: '/logout',
             separate: true,
@@ -134,7 +136,7 @@ function Header() {
                             />
                         ) : (
                             <button className={cx('more-btn')}>
-                                <FontAwesomeIcon icon={faEllipsisVertical} />
+                                <EllipsisIcon />
                             </button>
                         )}
                     </Menu>

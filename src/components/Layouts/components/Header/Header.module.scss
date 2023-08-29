@@ -32,9 +32,11 @@
 }
 
 .more-btn {
-    margin-left: 28px;
-    font-size: 2rem;
+    margin-left: 12px;
     padding: 4px 8px;
+    display: flex;
+    align-items: center;
+    font-size: 2rem;
     background-color: transparent;
     cursor: pointer;
 }
