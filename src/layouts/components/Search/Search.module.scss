@@ -15,6 +15,7 @@
     input {
         flex: 1;
         height: 100%;
+        padding-right: 40px;
         caret-color: var(--primary);
         background-color: transparent;
         font-size: 1.6rem;
@@ -50,6 +51,7 @@
 .clear,
 .loading {
     position: absolute;
+    display: flex;
     top: 50%;
     right: calc(var(--search-button-width) + 12px);
     transform: translateY(-50%);
