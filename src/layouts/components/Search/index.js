@@ -2,7 +2,7 @@ import { useEffect, useRef, useState } from 'react';
 import HeadlessTippy from '@tippyjs/react/headless';
 import classNames from 'classnames/bind';
 
-import * as searchService from '~/apiServices/searchService';
+import * as searchService from '~/services/searchService';
 import { useDebounce } from '~/hooks';
 import { ClearIcon, SearchIcon, SpinnerIcon } from '~/components/Icons';
 import { Wrapper as PopperWrapper } from '~/components/Popper';
