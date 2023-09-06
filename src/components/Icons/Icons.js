@@ -127,8 +127,8 @@ export const EllipsisIcon = ({ width = '2rem', height = '2rem', className }) => 
         xmlns="http://www.w3.org/2000/svg"
     >
         <path
-            fill-rule="evenodd"
-            clip-rule="evenodd"
+            fillRule="evenodd"
+            clipRule="evenodd"
             d="M24 4C26.2091 4 28 5.79086 28 8C28 10.2091 26.2091 12 24 12C21.7909 12 20 10.2091 20 8C20 5.79086 21.7909 4 24 4ZM24 20C26.2091 20 28 21.7909 28 24C28 26.2091 26.2091 28 24 28C21.7909 28 20 26.2091 20 24C20 21.7909 21.7909 20 24 20ZM24 36C26.2091 36 28 37.7909 28 40C28 42.2091 26.2091 44 24 44C21.7909 44 20 42.2091 20 40C20 37.7909 21.7909 36 24 36Z"
         ></path>
     </svg>
@@ -255,6 +255,32 @@ export const LogoutIcon = ({ width = '2rem', height = '2rem', className }) => (
             clipRule="evenodd"
             d="M24.1716 26L7 26C6.44771 26 6 25.5523 6 25L6 23C6 22.4477 6.44771 22 7 22L24.1716 22L20.2929 18.1213C19.9024 17.7308 19.9024 17.0976 20.2929 16.7071L21.7071 15.2929C22.0976 14.9024 22.7308 14.9024 23.1213 15.2929L30.4142 22.5858C31.1953 23.3668 31.1953 24.6332 30.4142 25.4142L23.1213 32.7071C22.7308 33.0976 22.0976 33.0976 21.7071 32.7071L20.2929 31.2929C19.9024 30.9024 19.9024 30.2692 20.2929 29.8787L24.1716 26ZM36 43L27 43C26.4477 43 26 42.5523 26 42L26 40C26 39.4477 26.4477 39 27 39L36 39C37.1046 39 38 38.1046 38 37L38 11C38 9.89543 37.1046 9 36 9L27 9C26.4477 9 26 8.55228 26 8L26 6C26 5.44771 26.4477 5 27 5L36 5C39.3137 5 42 7.68629 42 11L42 37C42 40.3137 39.3137 43 36 43Z"
         ></path>
+    </svg>
+);
+
+export const TickIcon = ({ width = '1.4rem', height = '1.4rem', className }) => (
+    <svg
+        className={className}
+        width={width}
+        height={height}
+        viewBox="0 0 48 48"
+        fill="currentColor"
+        xmlns="http://www.w3.org/2000/svg"
+    >
+        <g clipPath="url(#Icon_Color-Verified_Badge_svg__a)">
+            <path d="M0 24a24 24 0 1 1 48 0 24 24 0 0 1-48 0Z" fill="#20D5EC"></path>
+            <path
+                fillRule="evenodd"
+                clipRule="evenodd"
+                d="M37.12 15.88a3 3 0 0 1 0 4.24l-13.5 13.5a3 3 0 0 1-4.24 0l-8.5-8.5a3 3 0 1 1 4.24-4.24l6.38 6.38 11.38-11.38a3 3 0 0 1 4.24 0Z"
+                fill="#fff"
+            ></path>
+        </g>
+        <defs>
+            <clipPath id="Icon_Color-Verified_Badge_svg__a">
+                <path fill="#fff" d="M0 0h48v48H0z"></path>
+            </clipPath>
+        </defs>
     </svg>
 );
 
